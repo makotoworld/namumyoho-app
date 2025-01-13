@@ -2,20 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ベースとなるスタイル */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --foreground-rgb: 0, 0, 0;
+  --background-rgb: 249, 250, 251;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* スライダーのカスタマイズ */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* スライダーのトラック（Chrome用） */
+input[type="range"]::-webkit-slider-runnable-track {
+  background: #ddd;
+  height: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+/* スライダーのつまみ（Chrome用） */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  margin-top: -4px;
+  background-color: #3b82f6;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 50%;
+}
+
+/* スライダーのトラック（Firefox用） */
+input[type="range"]::-moz-range-track {
+  background: #ddd;
+  height: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+/* スライダーのつまみ（Firefox用） */
+input[type="range"]::-moz-range-thumb {
+  border: none;
+  background-color: #3b82f6;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 50%;
+}
+
+/* iOSでのタップハイライトを無効化 */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* スムーズスクロールの無効化（必要な場合） */
+@supports (-webkit-touch-callout: none) {
+  html {
+    scroll-behavior: auto;
+  }
 }
